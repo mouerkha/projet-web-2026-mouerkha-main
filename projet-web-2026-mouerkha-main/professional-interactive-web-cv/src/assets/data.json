@@ -1,0 +1,23 @@
+{
+  "projects": [
+    {
+      "title": "Project One",
+      "description": "This is a brief description of Project One."
+    },
+    {
+      "title": "Project Two",
+      "description": "This is a brief description of Project Two."
+    },
+    {
+      "title": "Project Three",
+      "description": "This is a brief description of Project Three."
+    }
+  ],
+  "skills": [
+    "JavaScript",
+    "React",
+    "CSS",
+    "HTML",
+    "jQuery"
+  ]
+}
