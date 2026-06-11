@@ -529,3 +529,67 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===================================================
+   تخصيص بوطونة الـ Chat باش تـولّي طـايـرة وتـلـفـت الـعـيـن
+   =================================================== */
+
+.n8n-chat-toggle, 
+button[class*="chat-button"],
+div[class*="chat"] button {
+    background: linear-gradient(135deg, #1e90ff, #ff4757) !important;
+    position: relative !important;
+    box-shadow: 0px 8px 25px rgba(30, 144, 255, 0.4) !important;
+    animation: floatAnimation 3s ease-in-out infinite !important;
+}
+
+.n8n-chat-toggle svg, 
+button[class*="chat-button"] svg {
+    display: none !important; 
+}
+
+.n8n-chat-toggle::after, 
+button[class*="chat-button"]::after {
+    content: "🤖" !important; 
+    font-size: 32px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    animation: eyeMovement 2s infinite alternate !important;
+}
+
+.n8n-chat-toggle::before, 
+button[class*="chat-button"]::before {
+    content: "Chat with AI ⚡" !important;
+    position: absolute !important;
+    top: -45px !important; 
+    right: 0 !important;
+    background-color: #ff4757 !important; 
+    color: white !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    font-family: sans-serif !important;
+    white-space: nowrap !important;
+    box-shadow: 0px 4px 15px rgba(255, 71, 87, 0.3) !important;
+    animation: pulseText 1.5s infinite alternate !important; 
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); } 
+    100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes pulseText {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes eyeMovement {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}  
+
