@@ -67,7 +67,7 @@ export default function Contact() {
         return;
       }
 
-      // Disable submit button while sending
+      
       const $submitBtn = $('#contact-form button[type="submit"]');
       $submitBtn.prop('disabled', true).text('Sending...');
 
@@ -128,7 +128,7 @@ export default function Contact() {
           animate={controls}
           initial={{ x: 0 }}
         >
-          {/* FormSubmit.co hidden fields */}
+          {}
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
 

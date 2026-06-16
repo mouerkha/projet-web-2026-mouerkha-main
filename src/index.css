@@ -46,7 +46,7 @@ a {
   text-shadow: 0 0 20px rgba(127, 77, 255, 0.3);
 }
 
-/* Header */
+
 .header {
   min-height: 100vh;
   background: transparent;
@@ -78,13 +78,11 @@ a {
 .hud-scanlines {
   z-index: 1;
   opacity: 0.15;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.08) 0,
-    rgba(255, 255, 255, 0.08) 1px,
-    transparent 1px,
-    transparent 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 4px);
   mix-blend-mode: soft-light;
 }
 
@@ -173,16 +171,18 @@ a {
 }
 
 @keyframes bounce {
+
   0%,
   100% {
     transform: translate(-50%, 0);
   }
+
   50% {
     transform: translate(-50%, 8px);
   }
 }
 
-/* About */
+
 .about {
   background-color: transparent;
   color: #f5f7ff;
@@ -245,7 +245,7 @@ a {
   background-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Resume */
+
 .resume {
   background-color: transparent;
   color: #e0e4f0;
@@ -308,7 +308,7 @@ a {
   position: relative;
 }
 
-/* Portfolio */
+
 .portfolio {
   background-color: transparent;
   padding: 5.2rem 0;
@@ -426,7 +426,7 @@ a {
   border: 1px solid rgba(109, 124, 255, 0.3);
 }
 
-/* Contact */
+
 .contact {
   background-color: transparent;
   color: #f3f5ff;
@@ -503,15 +503,19 @@ a {
   0% {
     transform: translate(0, 0);
   }
+
   25% {
     transform: translate(-2%, 1%);
   }
+
   50% {
     transform: translate(1%, -1%);
   }
+
   75% {
     transform: translate(-1%, 2%);
   }
+
   100% {
     transform: translate(0, 0);
   }
@@ -530,66 +534,86 @@ a {
   }
 }
 
-/* ===================================================
-   تخصيص بوطونة الـ Chat باش تـولّي طـايـرة وتـلـفـت الـعـيـن
-   =================================================== */
 
-.n8n-chat-toggle, 
+
+.n8n-chat-toggle,
 button[class*="chat-button"],
 div[class*="chat"] button {
-    background: linear-gradient(135deg, #1e90ff, #ff4757) !important;
-    position: relative !important;
-    box-shadow: 0px 8px 25px rgba(30, 144, 255, 0.4) !important;
-    animation: floatAnimation 3s ease-in-out infinite !important;
+  background: linear-gradient(135deg, #1e90ff, #ff4757) !important;
+  position: relative !important;
+  box-shadow: 0px 8px 25px rgba(30, 144, 255, 0.4) !important;
+  animation: floatAnimation 3s ease-in-out infinite !important;
 }
 
-.n8n-chat-toggle svg, 
+.n8n-chat-toggle svg,
 button[class*="chat-button"] svg {
-    display: none !important; 
+  display: none !important;
 }
 
-.n8n-chat-toggle::after, 
+.n8n-chat-toggle::after,
 button[class*="chat-button"]::after {
-    content: "🤖" !important; 
-    font-size: 32px !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    animation: eyeMovement 2s infinite alternate !important;
+  content: "🤖" !important;
+  font-size: 32px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  animation: eyeMovement 2s infinite alternate !important;
 }
 
-.n8n-chat-toggle::before, 
+.n8n-chat-toggle::before,
 button[class*="chat-button"]::before {
-    content: "Chat with AI ⚡" !important;
-    position: absolute !important;
-    top: -45px !important; 
-    right: 0 !important;
-    background-color: #ff4757 !important; 
-    color: white !important;
-    padding: 6px 12px !important;
-    border-radius: 20px !important;
-    font-size: 11px !important;
-    font-weight: bold !important;
-    font-family: sans-serif !important;
-    white-space: nowrap !important;
-    box-shadow: 0px 4px 15px rgba(255, 71, 87, 0.3) !important;
-    animation: pulseText 1.5s infinite alternate !important; 
+  content: "Chat with AI ⚡" !important;
+  position: absolute !important;
+  top: -45px !important;
+  right: 0 !important;
+  background-color: #ff4757 !important;
+  color: white !important;
+  padding: 6px 12px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: bold !important;
+  font-family: sans-serif !important;
+  white-space: nowrap !important;
+  box-shadow: 0px 4px 15px rgba(255, 71, 87, 0.3) !important;
+  animation: pulseText 1.5s infinite alternate !important;
 }
 
 @keyframes floatAnimation {
-    0% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-10px) scale(1.05); } 
-    100% { transform: translateY(0px) scale(1); }
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
 }
 
 @keyframes pulseText {
-    0% { transform: scale(1); opacity: 0.9; }
-    100% { transform: scale(1.1); opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
 }
 
 @keyframes eyeMovement {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(-5deg); }
-    100% { transform: rotate(5deg); }
-}  
+  0% {
+    transform: rotate(0deg);
+  }
 
+  50% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(5deg);
+  }
+}

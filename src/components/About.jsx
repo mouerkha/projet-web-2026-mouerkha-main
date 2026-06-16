@@ -50,7 +50,7 @@ export default function About() {
           <div className="about-copy">
             <h2 className="section-heading">About Me</h2>
             <p>
-              I am a Computer  student in Informatique , who loves building clean, interactive
+              I am a Computer  student in Computer Science , who loves building clean, interactive
               web experiences and also creating game mechanics with C++ and creating site web .
             </p>
             <p>

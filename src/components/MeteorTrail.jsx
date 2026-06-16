@@ -61,40 +61,40 @@ export default function MeteorTrail() {
     const t = clock.getElapsedTime();
     const dt = 0.016;
 
-    // Smooth follow with momentum
+
     const lerpFactor = 0.09;
     smoothPos.current.lerp(mouse3D.current, lerpFactor);
 
-    // Velocity
+
     const vx = smoothPos.current.x - prevSmooth.current.x;
     const vy = smoothPos.current.y - prevSmooth.current.y;
     const speed = Math.sqrt(vx * vx + vy * vy);
     prevSmooth.current.copy(smoothPos.current);
 
-    // Trail shift
+
     for (let i = TRAIL_LENGTH - 1; i > 0; i--) {
       trail.current[i].lerp(trail.current[i - 1], 0.65);
     }
     trail.current[0].copy(smoothPos.current);
 
-    // ===== TRAIL =====
+
     for (let i = 0; i < TRAIL_LENGTH; i++) {
       const r = 1 - i / TRAIL_LENGTH;
       const r2 = r * r;
       const r3 = r2 * r;
 
-      // Organic wobble that increases further down the trail
+
       const wobbleAmt = (1 - r) * 0.04;
       const wx = Math.sin(t * 6 + i * 0.2) * wobbleAmt * i * 0.3;
       const wy = Math.cos(t * 5 + i * 0.25) * wobbleAmt * i * 0.3;
-      // Heat rise - trail drifts slightly upward at the tail
+
       const heatRise = (1 - r) * (1 - r) * 0.008 * i;
 
       trailData.pos[i * 3] = trail.current[i].x + wx;
       trailData.pos[i * 3 + 1] = trail.current[i].y + wy + heatRise;
       trailData.pos[i * 3 + 2] = trail.current[i].z;
 
-      // Subtle fire gradient (dimmed)
+
       if (r > 0.9) {
         trailData.col[i * 3] = 0.6;
         trailData.col[i * 3 + 1] = 0.6;
@@ -121,7 +121,7 @@ export default function MeteorTrail() {
         trailData.col[i * 3 + 2] = 0.005 * b;
       }
 
-      // Size: thinner trail
+
       const flicker = 0.92 + 0.08 * Math.sin(t * 18 + i * 0.9);
       trailData.siz[i] = r3 * 2.8 * flicker * (0.4 + speed * 2.5);
     }
@@ -132,12 +132,12 @@ export default function MeteorTrail() {
       trailRef.current.geometry.attributes.size.needsUpdate = true;
     }
 
-    // ===== SPARKS (fast hot fragments) =====
+
     for (let i = 0; i < SPARK_COUNT; i++) {
       const p = sparkData.particles[i];
 
       if (p.life <= 0 && speed > 0.005) {
-        // Spawn near head with velocity-based direction
+
         const idx = Math.floor(Math.random() * 6);
         const src = trail.current[idx];
 
@@ -145,7 +145,7 @@ export default function MeteorTrail() {
         sparkData.pos[i * 3 + 1] = src.y + (Math.random() - 0.5) * 0.1;
         sparkData.pos[i * 3 + 2] = 0;
 
-        // Sparks fly outward opposite to movement + random spread
+
         const angle = Math.atan2(-vy, -vx) + (Math.random() - 0.5) * 2.5;
         const force = 0.015 + Math.random() * 0.05 + speed * 0.8;
         p.vx = Math.cos(angle) * force;
@@ -153,9 +153,9 @@ export default function MeteorTrail() {
         p.maxLife = 20 + Math.random() * 40;
         p.life = p.maxLife;
       } else if (p.life > 0) {
-        // Physics: gravity + air drag
-        p.vy -= 0.0008; // gravity pulls down
-        p.vx *= 0.975;  // air friction
+
+        p.vy -= 0.0008;
+        p.vx *= 0.975;
         p.vy *= 0.975;
 
         sparkData.pos[i * 3] += p.vx;
@@ -166,7 +166,7 @@ export default function MeteorTrail() {
       const lr = Math.max(0, p.life / p.maxLife);
       const lr2 = lr * lr;
 
-      // Spark colors (dimmed)
+
       if (p.type === 0) {
         sparkData.col[i * 3] = 0.6 * lr;
         sparkData.col[i * 3 + 1] = 0.45 * lr2;
@@ -191,7 +191,7 @@ export default function MeteorTrail() {
       sparksRef.current.geometry.attributes.size.needsUpdate = true;
     }
 
-    // ===== EMBERS (slow floating glowing particles) =====
+
     for (let i = 0; i < EMBER_COUNT; i++) {
       const e = emberData.particles[i];
 
@@ -203,16 +203,16 @@ export default function MeteorTrail() {
         emberData.pos[i * 3 + 1] = src.y + (Math.random() - 0.5) * 0.2;
         emberData.pos[i * 3 + 2] = 0;
 
-        // Embers float upward slowly with random drift
+
         e.vx = (Math.random() - 0.5) * 0.008;
-        e.vy = 0.004 + Math.random() * 0.01; // float up like heat
+        e.vy = 0.004 + Math.random() * 0.01;
         e.maxLife = 40 + Math.random() * 60;
         e.life = e.maxLife;
         e.brightness = 0.5 + Math.random() * 0.5;
       } else if (e.life > 0) {
-        // Gentle float with swaying
+
         e.vx += Math.sin(t * 3 + i) * 0.0002;
-        e.vy -= 0.00005; // very slight gravity
+        e.vy -= 0.00005;
 
         emberData.pos[i * 3] += e.vx;
         emberData.pos[i * 3 + 1] += e.vy;
@@ -221,7 +221,7 @@ export default function MeteorTrail() {
 
       const lr = Math.max(0, e.life / e.maxLife);
 
-      // Ember glow (dimmed)
+
       const pulse = 0.7 + 0.3 * Math.sin(t * 4 + i * 2);
       const b = e.brightness * pulse;
       emberData.col[i * 3] = 0.5 * lr * b;
@@ -237,7 +237,7 @@ export default function MeteorTrail() {
       embersRef.current.geometry.attributes.size.needsUpdate = true;
     }
 
-    // ===== GLOW LAYERS =====
+
     const layers = glowRefs.current;
     const hx = smoothPos.current.x;
     const hy = smoothPos.current.y;
@@ -287,25 +287,25 @@ export default function MeteorTrail() {
 
   return (
     <>
-      {/* Glow layer 1: Outer soft halo */}
+      { }
       <mesh ref={setGlowRef(0)} position={[100, 100, 0]}>
         <circleGeometry args={[0.4, 32]} />
         <meshBasicMaterial color="#cc6622" transparent opacity={0.08} blending={THREE.AdditiveBlending} depthWrite={false} />
       </mesh>
 
-      {/* Glow layer 2: Mid warm */}
+      { }
       <mesh ref={setGlowRef(1)} position={[100, 100, 0]}>
         <circleGeometry args={[0.2, 32]} />
         <meshBasicMaterial color="#ddaa55" transparent opacity={0.18} blending={THREE.AdditiveBlending} depthWrite={false} />
       </mesh>
 
-      {/* Glow layer 3: Inner core */}
+      { }
       <mesh ref={setGlowRef(2)} position={[100, 100, 0]}>
         <circleGeometry args={[0.08, 32]} />
         <meshBasicMaterial color="#ffeedd" transparent opacity={0.5} blending={THREE.AdditiveBlending} depthWrite={false} />
       </mesh>
 
-      {/* Fire trail */}
+      { }
       <points ref={trailRef}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={TRAIL_LENGTH} array={trailData.pos} itemSize={3} />
@@ -315,7 +315,7 @@ export default function MeteorTrail() {
         <shaderMaterial {...shader} />
       </points>
 
-      {/* Hot sparks */}
+      { }
       <points ref={sparksRef}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={SPARK_COUNT} array={sparkData.pos} itemSize={3} />
@@ -325,7 +325,7 @@ export default function MeteorTrail() {
         <shaderMaterial {...shader} />
       </points>
 
-      {/* Floating embers */}
+      { }
       <points ref={embersRef}>
         <bufferGeometry>
           <bufferAttribute attach="attributes-position" count={EMBER_COUNT} array={emberData.pos} itemSize={3} />

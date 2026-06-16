@@ -39,7 +39,7 @@ export default function Header() {
         <p className="header-subtitle terminal-subtitle">
           <span className="prompt">$</span>{' '}
           <Typewriter
-            words={['Computer Science Student in Informatique (S4) & Developer web ']}
+            words={['Computer Science Student (S4) AND Full-Stack Web Developer']}
             loop={1}
             cursor={false}
             typeSpeed={45}

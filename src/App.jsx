@@ -1,11 +1,14 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
 import './index.css';
-import Header from './components/Header';
-import About from './components/About';
-import Resume from './components/Resume';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import CosmicBackground from './components/CosmicBackground';
+import Header from './components/Header.jsx';
+import About from './components/About.jsx';
+import Resume from './components/Resume.jsx';
+import Portfolio from './components/Portfolio.jsx';
+import Contact from './components/Contact.jsx';
+import CosmicBackground from './components/CosmicBackground.jsx';
+
+
+import Chatbot from "./components/Chatbot.jsx";
 
 const sectionMotionProps = {
   initial: { opacity: 0, y: 50 },
@@ -41,6 +44,9 @@ function App() {
           <Contact />
         </motion.div>
       </main>
+
+      { }
+      <Chatbot />
     </div>
   );
 }

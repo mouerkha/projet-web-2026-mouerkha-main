@@ -10,14 +10,14 @@ const projects = [
     title: 'Atlas Runner',
     imageLabel: 'Project Image',
     description: '2D Game developed in C++ and SFML.',
-    videoSrc: '/atlas-runner.mp4',
+    videoSrc: 'vidio_atlas_renner.mp4',
     github: 'https://github.com/mouerkha/atlas-runner',
   },
   {
     title: 'DelicieuseFood',
     imageLabel: 'Project Image',
     description: 'E-commerce platform with Meta Ads and Stripe integration.',
-    videoSrc: '/delisieus-food.mp4',
+    videoSrc: 'vidio_Food.mp4',
     github: 'https://github.com/MOBARAK-WII/mini-pro.git',
   },
 ];

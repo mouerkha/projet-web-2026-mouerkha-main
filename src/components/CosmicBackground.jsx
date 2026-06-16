@@ -13,7 +13,7 @@ export default function CosmicBackground() {
         pointerEvents: 'none',
       }}
     >
-      {/* Deep purple-to-blue gradient base */}
+      { }
       <div
         style={{
           position: 'absolute',
@@ -24,7 +24,7 @@ export default function CosmicBackground() {
         }}
       />
 
-      {/* Subtle nebula glow effects */}
+      { }
       <div
         style={{
           position: 'absolute',
@@ -50,7 +50,7 @@ export default function CosmicBackground() {
         }}
       />
 
-      {/* Three.js Canvas */}
+      { }
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
         style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'auto' }}

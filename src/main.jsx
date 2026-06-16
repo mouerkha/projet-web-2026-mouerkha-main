@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// شـارجـي الـ ستايل والـ مـكـتـبـة ديال n8n ديريكت
+
 import '@n8n/chat/dist/style.css'
 import { createChat } from '@n8n/chat'
 
@@ -13,17 +13,17 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>,
 )
 
-// طـلّـق الـ چات نـيـشـان وسط الـ كود د اللوكال
+
 createChat({
   webhookUrl: 'http://localhost:5678/webhook/ef3a0d03-c746-45e4-99f9-627ff67568ee/chat'
 });
 
-// ===================================================
-// كود سحري لـ تـفـرْقـيـع الـ بوطونة الـورديـة وتـعـويـضـهـا بـ الـ AI
-// ===================================================
+
+
+
 const n8nStyle = document.createElement('style');
 n8nStyle.innerHTML = `
-  /* 1. تـبـديل الـ لّـون الـوردي د الـ بوطونة وتـحـريـكـهـا */
+  
   .n8n-chat-toggle, button[class*="chat-button"] {
     background: linear-gradient(135deg, #007aff, #ff2d55) !important;
     box-shadow: 0px 8px 25px rgba(255, 45, 85, 0.5) !important;
@@ -31,12 +31,12 @@ n8nStyle.innerHTML = `
     animation: floatButton 3s ease-in-out infinite !important;
   }
 
-  /* 2. تـطـيـيـر الـ مـيـساج الـأبيض (SVG) لي وسط الـ دائرة */
+  
   .n8n-chat-toggle svg, button[class*="chat-button"] svg {
     display: none !important;
   }
 
-  /* 3. تـعـويـض الـ مـيـساج بـ إيـمـوجـي الـ روبـوت AI */
+  
   .n8n-chat-toggle::after, button[class*="chat-button"]::after {
     content: "🤖" !important;
     font-size: 30px !important;
@@ -46,7 +46,7 @@ n8nStyle.innerHTML = `
     animation: shakeEyes 2s infinite alternate !important;
   }
 
-  /* 4. زيـادة كـتـابـة "Chat with AI ⚡" طـايـرة فـوق الـ بوطونة */
+  
   .n8n-chat-toggle::before, button[class*="chat-button"]::before {
     content: "Chat with AI ⚡" !important;
     position: absolute !important;
@@ -64,7 +64,7 @@ n8nStyle.innerHTML = `
     animation: pulseText 1.5s infinite alternate !important;
   }
 
-  /* لـ les Animations د الـ حـركـة */
+  
   @keyframes floatButton {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
