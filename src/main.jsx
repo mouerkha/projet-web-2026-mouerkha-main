@@ -15,9 +15,8 @@ createRoot(document.getElementById('root')).render(
 
 
 createChat({
-  webhookUrl: 'http://localhost:5678/webhook/ef3a0d03-c746-45e4-99f9-627ff67568ee/chat'
+  webhookUrl: 'http://localhost:7860/webhook/cc2b2e0d-d93c-4230-a7a1-e52ffa6e7992/chat'
 });
-
 
 
 

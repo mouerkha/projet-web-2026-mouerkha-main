@@ -8,7 +8,7 @@ function Chatbot() {
   const sendMessageToBot = async (userMessage) => {
     try {
       
-      const response = await fetch('https://wirkha-n8n-bot.hf.space/webhook/chat', {
+      const response = await fetch('https://wirkha-n8n-bot.hf.space/webhook/ef3a0d03-c746-45e4-99f9-627ff67568ee/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
